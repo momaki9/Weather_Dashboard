@@ -1,3 +1,22 @@
 body {
     font-family: 'Varela Round', monospace;
   }
+
+.custom {
+  margin: 12px;
+  color: white;
+  padding-top: 6px;
+  text-align: center;
+}
+
+.srch-btn {
+  margin: 4px;
+}
+
+.heading {
+  color: white;
+}
+
+.city-input {
+  margin-left: 4px;
+}
