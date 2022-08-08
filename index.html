@@ -8,37 +8,83 @@
     <!-- Bootstrap CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="./assets/style/style.css" />
 </head>
 <body>
-    <header class="row">
-        <h1 class="col text-center mx-auto bg-dark bg-gradient heading">Weather App</h1>
+    <header>
+        <h1 class="text-center mx-auto bg-dark bg-gradient heading">Weather App</h1>
     </header>
+    <!--has search bar and current weather conditions-->
     <main class="main-content row">
-        <section class="search-content col-3">
-            <h2 class="col-12">Search for a City:</h2>
-            <input class="col-8 city-input">
-            <button class="col-4 srch-btn btn btn-dark">Search</button>
+        <!--search bar for city-->
+        <section class="search-content col-lg-3">
+            <h2>Search for a City:</h2>
+            <input class="city-input">
+            <button class="srch-btn btn btn-dark">Search</button>
+            <ul class="search-history"></ul>
         </section>
-        <section class="display-content col-9">
+        <!--current weather conditions-->
+        <section class="display-content col-lg-9">
             <h2><span id="city-name"></span> <span id="date"></span></h2>
             <ul>
-                <li id="temp">Temp: </li>
-                <li id="wind">Wind: </li>
-                <li id="humidity">Humidity: </li>
-                <li id="uv-index">UV Index: </li>
+                <li id="temp">Temp: <span id="temp-value"></span></li>
+                <li id="wind">Wind: <span id="wind-value"></span></li>
+                <li id="humidity">Humidity: <span id="humidity-value"></span></li>
+                <li id="uv-index">UV Index: <span id="uv-index-value"></span></li>
             </ul>    
         </section>
-        <section class="forecast-content offset-3 col-9">
-            <h3>5-Day Forecast:</h3>
-            <ul id="forecast" class="row">
-            </ul>
-        </section>
     </main>
+    <!--5 day forecast weather conditions-->
+    <section class="forecast-content">
+        <div class="row offset-3">
+            <h3 class="col">5-Day Forecast:</h3>
+            <ul id="forecast">
+        </div>
+            <!--Day one forecast-->
+        <div class="row offset-3">
+            <div class="custom bg-dark bg-gradient col">
+                <h5 id="day-one-date">Day 1</h5>
+                <h6 id="day-one-temp">Temp: </h6>
+                <h6 id="day-one-wind">Wind: </h6>
+                <h6 id="day-one-hum">Humidity: </h6>
+            </div> 
+            <!--Day two forecast-->
+            <div class="custom bg-dark bg-gradient col">
+                <h5 id="day-two-date">Day 2</h5>
+                <h6 id="day-two-temp">Temp: </h6>
+                <h6 id="day-two-wind">Wind: </h6>
+                <h6 id="day-two-hum">Humidity: </h6>
+            </div> 
+            <!--Day three forecast-->
+            <div class="custom bg-dark bg-gradient col">
+                <h5 id="day-three-date">Day 3</h5>
+                <h6 id="day-three-temp">Temp: </h6>
+                <h6 id="day-three-wind">Wind: </h6>
+                <h6 id="day-three-hum">Humidity: </h6>
+            </div> 
+            <!--Day four forecast-->
+            <div class="custom bg-dark bg-gradient col">
+                <h5 id="day-four-date">Day 4</h5>
+                <h6 id="day-four-temp">Temp: </h6>
+                <h6 id="day-four-wind">Wind: </h6>
+                <h6 id="day-four-hum">Humidity: </h6>
+            </div> 
+            <!--Day five forecast-->
+            <div class="custom bg-dark bg-gradient col">
+                <h5 id="day-five-date">Day 5</h5>
+                <h6 id="day-five-temp">Temp: </h6>
+                <h6 id="day-five-wind">Wind: </h6>
+                <h6 id="day-five-hum">Humidity: </h6>
+            </div>    
+        </div>
+        </ul>
+    </section>
     <!-- Added link to the jQuery library -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script src="./assets/script/script.js"></script>
 </body>
 </html>

@@ -1,11 +1,19 @@
 var dateEl = $('#date');
 var cityEl = $('#city-name')
 var tempDisplay = $('#temp')
-var windDisplay = $('#wind')
-var humididtyDisplay = $('#humidity')
-var uvindexDisplay = $('#uv-index')
+// var currentTemp = $('#temp-value')
+// var windDisplay = $('#wind')
+// var currentWind = $('#wind-value')
+// var humididtyDisplay = $('#humidity')
+// var currentHumidity = $('#humidity-value')
+// var uvindexDisplay = $('#uv-index')
+// var currentUvi = $('#uv-index-value')
 var input = $('.city-input')
-var forecast = $('#forecast')
+// var forecast = $('#forecast')
+var searchHistory = $('.search-history')
+var searchedCities = [];
+
+localStorage.getItem("cities")
 
 
 function dateToday() {
@@ -13,10 +21,20 @@ function dateToday() {
     dateEl.text(currentTime);
 };
 
+
+
 $('.srch-btn').on('click', function() {
     var cityInput = input.val();
     cityEl.text(cityInput);
     var cityUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${cityInput}&appid=f57f9a13f3296d2929f153a072066d23`;
+
+    searchedCities.push(input.val())
+    localStorage.setItem("cities", searchedCities)
+    var searchEl = $('<li>');
+    searchEl.attr("class", "list-group-item list-group-item-dark li-custom")
+    var lastCity = searchedCities[searchedCities.length - 1]
+    searchEl.text(lastCity)
+    searchHistory.append(searchEl);
 
     getGeoCodeApi();
 
@@ -43,51 +61,55 @@ $('.srch-btn').on('click', function() {
                 return response.json();
             })
                 .then(function (data) {
-                console.log(data)
-                var currentTemp = $('<span>')
-                currentTemp.text(`${data.current.temp}°F`)
-                tempDisplay.append(currentTemp)
-        
-                var currentWind = $('<span>')
-                currentWind.text(`${data.current.wind_speed} MPH`)
-                windDisplay.append(currentWind)
-        
-                var currentHumidity = $('<span>')
-                currentHumidity.text(`${data.current.humidity} %`)
-                humididtyDisplay.append(currentHumidity)
-        
-                var currentUvi = $('<span>')
-                currentUvi.text(data.current.uvi)
-                uvindexDisplay.append(currentUvi)
+                $('#temp-value').text(`${data.current.temp}°F`)
+                $('#wind-value').text(`${data.current.wind_speed} MPH`)
+                $('#humidity-value').text(`${data.current.humidity} %`)
+                $('#uv-index-value').text(data.current.uvi)
 
-                console.log(data.daily)
+                
 
-                for (var i = 1; i < 6; i++) {
-                    var divSec = $('<div>')
-                    divSec.attr("class", "col-2 bg-dark bg-gradient custom")
-                    forecast.append(divSec)
+            var dayOne = moment().add(1, 'days').format('MM/DD/YYYY');
+            var dayTwo = moment().add(2, 'days').format('MM/DD/YYYY');
+            var dayThree = moment().add(3, 'days').format('MM/DD/YYYY');
+            var dayFour = moment().add(4, 'days').format('MM/DD/YYYY');
+            var dayFive = moment().add(5, 'days').format('MM/DD/YYYY');
+            
 
-                    var dateEl = $('<h5>');
-                    dateEl.text('8/8/22')
-                    divSec.append(dateEl)
+            $('#day-one-date').text(dayOne)
+            $('#day-two-date').text(dayTwo)
+            $('#day-three-date').text(dayThree)
+            $('#day-four-date').text(dayFour)
+            $('#day-five-date').text(dayFive)
 
-                    var tempEl = $('<h6>')
-                    tempEl.text(`Temp: ${data.daily[i].temp.max}°F`)
-                    divSec.append(tempEl)
+            $('#day-one-temp').text(`Temp: ${data.daily[1].temp.max}°F`)
+            $('#day-two-temp').text(`Temp: ${data.daily[2].temp.max}°F`)
+            $('#day-three-temp').text(`Temp: ${data.daily[3].temp.max}°F`)
+            $('#day-four-temp').text(`Temp: ${data.daily[4].temp.max}°F`)
+            $('#day-five-temp').text(`Temp: ${data.daily[5].temp.max}°F`)
 
-                    var windEl = $('<h6>')
-                    windEl.text(`Wind: ${data.daily[i].wind_speed} MPH`)
-                    divSec.append(windEl)
+            $('#day-one-wind').text(`Wind: ${data.daily[1].wind_speed} MPH`)
+            $('#day-two-wind').text(`Wind: ${data.daily[2].wind_speed} MPH`)
+            $('#day-three-wind').text(`Wind: ${data.daily[3].wind_speed} MPH`)
+            $('#day-four-wind').text(`Wind: ${data.daily[4].wind_speed} MPH`)
+            $('#day-five-wind').text(`Wind: ${data.daily[5].wind_speed} MPH`)
 
-                    var humEl = $('<h6>')
-                    humEl.text(`Humidity: ${data.daily[i].humidity} %`)
-                    divSec.append(humEl)
-                  }
+            $('#day-one-hum').text(`Humidity: ${data.daily[1].humidity} %`)
+            $('#day-two-hum').text(`Humidity: ${data.daily[2].humidity} %`)
+            $('#day-three-hum').text(`Humidity: ${data.daily[3].humidity} %`)
+            $('#day-four-hum').text(`Humidity: ${data.daily[4].humidity} %`)
+            $('#day-five-hum').text(`Humidity: ${data.daily[5].humidity} %`)
+
+
             });
         }
-    });
-    }
+    });}
 
 })
+
+$( function() {
+    input.autocomplete({
+      source: searchedCities
+    });
+});
 
 dateToday();

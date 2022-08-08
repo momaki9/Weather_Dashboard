@@ -20,3 +20,18 @@ body {
 .city-input {
   margin-left: 4px;
 }
+
+.li-custom {
+  margin: 10px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.search-history {
+  padding-left: 0;
+}
+
+.custom {
+  width: fit-content;
+}
+
