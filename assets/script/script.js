@@ -61,25 +61,36 @@ $('.srch-btn').on('click', function() {
                 return response.json();
             })
                 .then(function (data) {
+                var link = `https://openweathermap.org/img/wn/${data.current.weather[0].icon}@2x.png`
+                $('#main-icon').attr('src', link)
                 $('#temp-value').text(`${data.current.temp}°F`)
                 $('#wind-value').text(`${data.current.wind_speed} MPH`)
                 $('#humidity-value').text(`${data.current.humidity} %`)
-                $('#uv-index-value').text(data.current.uvi)
-
-                
+                $('#uv-index-value').text(data.current.uvi)  
 
             var dayOne = moment().add(1, 'days').format('MM/DD/YYYY');
             var dayTwo = moment().add(2, 'days').format('MM/DD/YYYY');
             var dayThree = moment().add(3, 'days').format('MM/DD/YYYY');
             var dayFour = moment().add(4, 'days').format('MM/DD/YYYY');
             var dayFive = moment().add(5, 'days').format('MM/DD/YYYY');
-            
 
             $('#day-one-date').text(dayOne)
             $('#day-two-date').text(dayTwo)
             $('#day-three-date').text(dayThree)
             $('#day-four-date').text(dayFour)
             $('#day-five-date').text(dayFive)
+
+            var linkOne = `https://openweathermap.org/img/wn/${data.daily[1].weather[0].icon}@2x.png`
+            var linkTwo = `https://openweathermap.org/img/wn/${data.daily[2].weather[0].icon}@2x.png`
+            var linkThree = `https://openweathermap.org/img/wn/${data.daily[3].weather[0].icon}@2x.png`
+            var linkFour = `https://openweathermap.org/img/wn/${data.daily[4].weather[0].icon}@2x.png`
+            var linkFive = `https://openweathermap.org/img/wn/${data.daily[5].weather[0].icon}@2x.png`
+           
+            $('#day-one-icon').attr('src', linkOne)
+            $('#day-two-icon').attr('src', linkTwo)
+            $('#day-three-icon').attr('src', linkThree)
+            $('#day-four-icon').attr('src', linkFour)
+            $('#day-five-icon').attr('src', linkFive)
 
             $('#day-one-temp').text(`Temp: ${data.daily[1].temp.max}°F`)
             $('#day-two-temp').text(`Temp: ${data.daily[2].temp.max}°F`)
