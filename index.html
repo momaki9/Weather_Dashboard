@@ -13,19 +13,19 @@
 </head>
 <body>
     <header>
-        <h1 class="text-center mx-auto bg-dark bg-gradient heading">Weather App</h1>
+        <h1>Weather App</h1>
     </header>
     <!--has search bar and current weather conditions-->
-    <main class="main-content row">
+    <main class="main-content">
         <!--search bar for city-->
-        <section class="search-content col-lg-3">
-            <h2>Search for a City:</h2>
+        <section class="search-content">
+            <h3>Search for a City:</h3>
             <input class="city-input">
-            <button class="srch-btn btn btn-dark">Search</button>
+            <button class="srch-btn">Search</button>
             <ul class="search-history"></ul>
         </section>
         <!--current weather conditions-->
-        <section class="display-content col-lg-9">
+        <section class="display-content">
             <h2><span id="city-name"></span> <span id="date"></span></h2>
             <ul>
                 <img id="main-icon">
@@ -38,13 +38,13 @@
     </main>
     <!--5 day forecast weather conditions-->
     <section class="forecast-content">
-        <div class="row offset-3">
-            <h3 class="col">5-Day Forecast:</h3>
+        <div>
+            <h3>5-Day Forecast:</h3>
             <ul id="forecast">
         </div>
             <!--Day one forecast-->
         <div class="row offset-3">
-            <div class="custom bg-dark bg-gradient col">
+            <div class="custom">
                 <h5 id="day-one-date">Day 1</h5>
                 <img id="day-one-icon" />
                 <h6 id="day-one-temp">Temp: </h6>
@@ -52,7 +52,7 @@
                 <h6 id="day-one-hum">Humidity: </h6>
             </div> 
             <!--Day two forecast-->
-            <div class="custom bg-dark bg-gradient col">
+            <div class="custom">
                 <h5 id="day-two-date">Day 2</h5>
                 <img id="day-two-icon" />
                 <h6 id="day-two-temp">Temp: </h6>
@@ -60,7 +60,7 @@
                 <h6 id="day-two-hum">Humidity: </h6>
             </div> 
             <!--Day three forecast-->
-            <div class="custom bg-dark bg-gradient col">
+            <div class="custom">
                 <h5 id="day-three-date">Day 3</h5>
                 <img id="day-three-icon" />
                 <h6 id="day-three-temp">Temp: </h6>
@@ -68,7 +68,7 @@
                 <h6 id="day-three-hum">Humidity: </h6>
             </div> 
             <!--Day four forecast-->
-            <div class="custom bg-dark bg-gradient col">
+            <div class="custom">
                 <h5 id="day-four-date">Day 4</h5>
                 <img id="day-four-icon" />
                 <h6 id="day-four-temp">Temp: </h6>
@@ -76,7 +76,7 @@
                 <h6 id="day-four-hum">Humidity: </h6>
             </div> 
             <!--Day five forecast-->
-            <div class="custom bg-dark bg-gradient col">
+            <div class="custom">
                 <h5 id="day-five-date">Day 5</h5>
                 <img id="day-five-icon" />
                 <h6 id="day-five-temp">Temp: </h6>
@@ -91,6 +91,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="config.js"></script>
     <script src="./assets/script/script.js"></script>
 </body>
 </html>

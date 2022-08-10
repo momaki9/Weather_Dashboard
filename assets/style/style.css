@@ -25,6 +25,7 @@ body {
   margin: 10px;
   text-align: center;
   font-weight: bold;
+  width: fit-content;
 }
 
 .search-history {
@@ -33,5 +34,21 @@ body {
 
 .custom {
   width: fit-content;
+}
+
+.uvi-low {
+  background-color: green;
+}
+.uvi-mod {
+  background-color: yellow;
+}
+.uvi-hi {
+  background-color: orange;
+}
+.uvi-vhi {
+  background-color: red;
+}
+.uvi-ext {
+  background-color: purple;
 }
 
