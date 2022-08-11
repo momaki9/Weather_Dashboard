@@ -17,33 +17,19 @@
     </header>
     <!--has search bar and current weather conditions-->
     <main class="main-content">
-        <!--search bar for city-->
-        <section class="search-content">
-            <h3>Search for a City:</h3>
-            <input class="city-input">
-            <button class="srch-btn">Search</button>
-            <ul class="search-history"></ul>
-        </section>
         <!--current weather conditions-->
-        <section class="display-content">
+        <section class="display-content content col-lg-7">
             <h2><span id="city-name"></span> <span id="date"></span></h2>
-            <ul>
+            <ul id="current-forecast">
                 <img id="main-icon">
                 <li id="temp">Temp: <span id="temp-value"></span></li>
                 <li id="wind">Wind: <span id="wind-value"></span></li>
                 <li id="humidity">Humidity: <span id="humidity-value"></span></li>
                 <li id="uv-index">UV Index: <span id="uv-index-value"></span></li>
-            </ul>    
-        </section>
-    </main>
-    <!--5 day forecast weather conditions-->
-    <section class="forecast-content">
-        <div>
+            </ul>
+            <!--5 day forecast weather conditions-->
             <h3>5-Day Forecast:</h3>
-            <ul id="forecast">
-        </div>
             <!--Day one forecast-->
-        <div class="row offset-3">
             <div class="custom">
                 <h5 id="day-one-date">Day 1</h5>
                 <img id="day-one-icon" />
@@ -82,10 +68,16 @@
                 <h6 id="day-five-temp">Temp: </h6>
                 <h6 id="day-five-wind">Wind: </h6>
                 <h6 id="day-five-hum">Humidity: </h6>
-            </div>    
-        </div>
-        </ul>
-    </section>
+            </div> 
+        </section>
+        <!--search bar for city-->
+        <section class="search-content benefits">
+            <h3>Search for a City:</h3>
+            <input class="city-input">
+            <button class="srch-btn">Search</button>
+            <ul class="search-history"></ul>
+        </section>   
+    </main>
     <!-- Added link to the jQuery library -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>

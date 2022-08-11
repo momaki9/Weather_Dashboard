@@ -5,41 +5,53 @@ var input = $('.city-input')
 var searchHistory = $('.search-history')
 var searchedCities = [];
 
-// localStorage.getItem("cities")
-// localStorage.getItem("city")
+var testEl = localStorage.getItem("city")
+
+if (testEl !== null) {
+var storedEl = testEl.split(',')
+for (var i = 0; i < storedEl.length; i++) {
+  var searchEl = $('<li>');
+  searchEl.attr("class", "list-group-item list-group-item-dark li-custom")
+  searchEl.text(storedEl[i])
+  searchHistory.append(searchEl)
+}
+}
+
+function dateToday() {
+    var currentTime = moment().format('(dddd - MM/DD/YYYY)');
+    dateEl.text(currentTime);
+};
+
+$('.srch-btn').on('click', showWeather)
 
 searchHistory.on('click', function(event) {
     var inputEl = event.target
     var inputTex = inputEl.textContent
-    // console.log(inputTex)
+    console.log(inputTex)
     var cityUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${inputTex}&appid=${api.key}`;
-    retreiveGeoCodeApi();
-
-    function retreiveGeoCodeApi() {
-
+    geoCodeApi();
+    function geoCodeApi() {
         var requestUrl = cityUrl;
         fetch(requestUrl)
         .then(function (response) {
-        return response.json();
+            return response.json();
         })
         .then(function (data) {
-        var cityLat = data[0].lat
-        var storedLat = cityLat.toFixed(2)
-        var cityLon = data[0].lon  
-        var storedLon = cityLon.toFixed(2)
-     
-
-    var weatherUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${storedLat}&lon=${storedLon}&exclude=minutely,hourly&units=imperial&appid=${api.key}d`;
-
-    retrieveWeatherApi();
-    function retrieveWeatherApi() {
-        var requestUrl = weatherUrl;
+            var cityLat = data[0].lat
+            var storedLat = cityLat.toFixed(2)
+            var cityLon = data[0].lon  
+            var storedLon = cityLon.toFixed(2)
+            var weatherUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${storedLat}&lon=${storedLon}&exclude=minutely,hourly&units=imperial&appid=${api.key}`;
+            weatherApi();   
+            function weatherApi() {
+                var requestUrl = weatherUrl;
+                console.log(weatherUrl)
             fetch(requestUrl)
                 .then(function (response) {
                 return response.json();
             })
-                .then(function (data) {
-                    console.log(data)
+            .then(function (data) {
+                console.log(data)
                 var link = `https://openweathermap.org/img/wn/${data.current.weather[0].icon}@2x.png`
                 $('#main-icon').attr('src', link)
                 $('#temp-value').text(`${data.current.temp}°F`)
@@ -108,69 +120,37 @@ searchHistory.on('click', function(event) {
             $('#day-three-hum').text(`Humidity: ${data.daily[3].humidity} %`)
             $('#day-four-hum').text(`Humidity: ${data.daily[4].humidity} %`)
             $('#day-five-hum').text(`Humidity: ${data.daily[5].humidity} %`)
+            })
+            }
         })
+        
     }
-        })
-}
-})
-
-
-function saveSearchHistory() {
-var stored = localStorage.getItem("city")
-var storedArray = stored.split(',')
-
-for (var i = 0; i < storedArray.length; i++) {
-    var searchEl = $('<li>');
-    searchEl.attr("class", "list-group-item list-group-item-dark li-custom")
-    searchEl.text(storedArray[i])
-    searchHistory.append(searchEl);
     
-}
-// localStorage.setItem("city", storedArray)
-}
-
-function dateToday() {
-    var currentTime = moment().format('(dddd - MM/DD/YYYY)');
-    dateEl.text(currentTime);
-};
-
-// UV-Index values low (0-2 = green), moderate (3-5 yellow), or high (6-7) {extra 9-10 very high = red; 11 or more extreme purple}
-
-$('.srch-btn').on('click', showWeather) 
-
+})
+ 
 function showWeather() {
-
     var cityInput = input.val();
+    localStorage.setItem("city", cityInput)
+    console.log(cityInput)
     cityEl.text(cityInput);
-
     var cityUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${cityInput}&appid=${api.key}`;
 
     searchedCities.push(input.val())
-
-    // var searchEl = $('<li>');
-    // searchEl.attr("class", "list-group-item list-group-item-dark li-custom")
-    // searchHistory.append(searchEl);
-
-    // var lastCity = searchedCities[searchedCities.length - 1]
-    // searchEl.text(lastCity)
-    
-
-    console.log(searchedCities)
-
-    for (var i = 0; i < searchedCities.length; i++) {
-        var searchEl = $('<li>');
-        searchEl.attr("class", "list-group-item list-group-item-dark li-custom")
-        // searchHistory.append(searchEl);
-        var lastCity = searchedCities[searchedCities.length - 1]
-        searchEl.text(lastCity)
-        // searchEl.text(searchedCities[i])
-        searchHistory.append(searchEl);   
-    }
+    var lastCity = searchedCities[searchedCities.length - 1]
+    var searchEl = $('<li>');
+    searchEl.attr("class", "list-group-item list-group-item-dark li-custom")
+    searchEl.text(lastCity)
+    searchHistory.append(searchEl);
+    // localStorage.setItem("city", searchedCities)
+    // for (var i = 0; i < searchedCities.length; i++) {
+    //     var searchEl = $('<li>');
+    //     searchEl.attr("class", "list-group-item list-group-item-dark li-custom")
+    //     searchEl.text(lastCity)
+    //     searchHistory.append(searchEl);   
+    // }
 
     localStorage.setItem("city", searchedCities)
-
-    getGeoCodeApi();
-
+    getGeoCodeApi()
     function getGeoCodeApi() {
         var requestUrl = cityUrl;
         fetch(requestUrl)
@@ -182,11 +162,8 @@ function showWeather() {
         var storedLat = cityLat.toFixed(2)
         var cityLon = data[0].lon  
         var storedLon = cityLon.toFixed(2)
-
         var weatherUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${storedLat}&lon=${storedLon}&exclude=minutely,hourly&units=imperial&appid=${api.key}`;
-
-        getWeatherApi();
-    
+        getWeatherApi();   
         function getWeatherApi() {
             var requestUrl = weatherUrl;
             fetch(requestUrl)
@@ -263,19 +240,15 @@ function showWeather() {
             $('#day-three-hum').text(`Humidity: ${data.daily[3].humidity} %`)
             $('#day-four-hum').text(`Humidity: ${data.daily[4].humidity} %`)
             $('#day-five-hum').text(`Humidity: ${data.daily[5].humidity} %`)
-
-
             });
         }
     });}
-
 }
-
 $( function() {
     input.autocomplete({
       source: searchedCities
     });
 });
 
-saveSearchHistory();
+
 dateToday();

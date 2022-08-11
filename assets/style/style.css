@@ -1,12 +1,5 @@
 body {
     font-family: 'Varela Round', monospace;
-  }
-
-.custom {
-  margin: 12px;
-  color: white;
-  padding-top: 6px;
-  text-align: center;
 }
 
 .srch-btn {
@@ -28,12 +21,13 @@ body {
   width: fit-content;
 }
 
-.search-history {
-  padding-left: 0;
-}
 
-.custom {
-  width: fit-content;
+h1 {
+  text-align: center;
+  background-color: #2589bd;
+}
+h6 {
+  padding: 10px;
 }
 
 .uvi-low {
@@ -52,3 +46,64 @@ body {
   background-color: purple;
 }
 
+
+main {
+  display: flex;
+}
+
+.content {
+  width: 55%;
+  display: inline-block;
+  margin-left: 20px;
+}
+
+input {
+  flex-wrap: wrap;
+  width: fit-content;
+}
+
+.benefits {
+  margin: 10px;
+  padding: 10px;
+  clear: both;
+  float: right;
+  width: fit-content;
+  height: 20%;
+  background-color: #2589bd;
+}
+
+.custom {
+  max-width: 18%;
+  max-height: 60%;
+  flex-direction: row;
+  background-color: #2589bd;
+  margin: 1px;
+  padding: 4px;
+  text-align: center;
+  border-radius: 8px;
+}
+
+h6 {
+  font-weight: bold;
+}
+
+div {
+  width: fit-content;
+}
+
+section div {
+  float: left;
+  display: inline;
+}
+
+#current-forecast {
+  background-color: #2589bd;
+  width: fit-content;
+  margin: 1px;
+  padding: 20px;
+  font-weight: bold;
+  border-radius: 6px;
+  text-align: center;
+  list-style: none;
+  word-spacing: 2px;
+}
