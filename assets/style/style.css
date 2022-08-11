@@ -1,35 +1,35 @@
 body {
     font-family: 'Varela Round', monospace;
 }
-
+/* custom styling for search button */
 .srch-btn {
   margin: 4px;
 }
-
-.heading {
-  color: white;
-}
-
+/* custom styling for search input */
 .city-input {
   margin-left: 4px;
 }
-
+/* custom styling for the list items dynamically created */
 .li-custom {
   margin: 10px;
   text-align: center;
   font-weight: bold;
   width: fit-content;
 }
-
-
+/* custom styling for the headings */
 h1 {
   text-align: center;
   background-color: #2589bd;
 }
+h3 {
+  margin-top: 10px;
+  padding-top: 10px;
+}
 h6 {
   padding: 10px;
+  font-weight: bold;
 }
-
+/* Background styling for UV-Index values */
 .uvi-low {
   background-color: green;
 }
@@ -45,24 +45,23 @@ h6 {
 .uvi-ext {
   background-color: purple;
 }
-
-
+/* custom styling for main section */
 main {
   display: flex;
 }
-
+/* custom styling for section with class of content */
 .content {
   width: 55%;
   display: inline-block;
   margin-left: 20px;
 }
-
+/* custom styling for input */
 input {
   flex-wrap: wrap;
   width: fit-content;
 }
-
-.benefits {
+/* custom styling for city search section */
+.search-content {
   margin: 10px;
   padding: 10px;
   clear: both;
@@ -71,31 +70,28 @@ input {
   height: 20%;
   background-color: #2589bd;
 }
-
+#city-search {
+  text-align: center;
+}
+/* custom styling*/
 .custom {
-  max-width: 18%;
-  max-height: 60%;
+  width: auto;
+  height: auto;
   flex-direction: row;
   background-color: #2589bd;
-  margin: 1px;
-  padding: 4px;
+  margin:4px;
+  padding: 8px;
   text-align: center;
   border-radius: 8px;
 }
-
-h6 {
-  font-weight: bold;
-}
-
 div {
   width: fit-content;
 }
-
 section div {
   float: left;
   display: inline;
 }
-
+/* custom styling for current weather section */
 #current-forecast {
   background-color: #2589bd;
   width: fit-content;
